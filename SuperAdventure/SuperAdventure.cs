@@ -1,27 +1,29 @@
 ﻿using Engine;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace SuperAdventure
 {
     public partial class SuperAdventure : Form
     {
+        /// <summary>
+        /// the current player
+        /// </summary>
         private Player _player;
+
+        /// <summary>
+        /// the data file of the current player
+        /// </summary>
         private const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
         public SuperAdventure()
         {
             InitializeComponent();
 
             //_player = PlayerDataMapper.CreateFromDatabase();
-
+            
             if (_player == null)
             {
                 if (File.Exists(PLAYER_DATA_FILE_NAME))
@@ -96,9 +98,6 @@ namespace SuperAdventure
 
             _player.PropertyChanged += PlayerOnPropertyChanged;
             _player.OnMessage += DisplayMessage;
-
-
-
         }
 
         /// <summary>
